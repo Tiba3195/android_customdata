@@ -1,0 +1,132 @@
+<Signals>
+    <Message Address="01f">
+        <Signal name="Brake Pedal Position " startByte="1" startBit="7" length="8" type="UNM" rangeMin="0" rangeMax="100" units="" conversionFormula="E = N * 100/255" />
+    </Message>
+    <Message Address="0f9">
+        <Signal name="Transmission Output Shaft Angular Velocity " startByte="3" startBit="7" length="16" type="UNM" rangeMin="0" rangeMax="16383.75" units="rpm" conversionFormula="E = N * 0.25" />
+        <Signal name="Transmission Overall Estimated Torque Ratio " startByte="0" startBit="6" length="15" type="SNM" rangeMin="-64.0" rangeMax="63.99609375" units="" conversionFormula="E = N * (1/256)" />
+    </Message>
+    <Message Address="102CC040">
+        <Signal name="Current Gear " startByte="2" startBit="7" length="8" type="ENM" rangeMin="0" rangeMax="100" units="" conversionFormula="$CF = P; $CE = R; $CD = N; $C1 = 1; $C2 = 2; $C3 = 3; $C4 = 4; $C5 = 5; $C6 = 6" trigger="true"/>
+    </Message>
+    <Message Address="1f5">
+        <Signal name="Transmission Estimated Gear " startByte="0" startBit="3" length="4" type="ENM" rangeMin="0" rangeMax="0" units="" conversionFormula="$0 = Not Supported; $1 = First Gear; $2 = Second Gear; $3 = Third Gear; $4 = Fourth Gear; $5 = Fifth Gear; $6 = Sixth Gear; $7 = Seventh Gear; $8 = Eighth Gear; $C = CVT Forward Gear; $D = Neutral Gear; $E = Reverse Gear; $F = Park Gear" trigger="true"/>
+        <Signal name="Automatic Transmission Commanded Gear " startByte="1" startBit="3" length="4" type="ENM" rangeMin="0" rangeMax="0" units="" conversionFormula="$0 = Not Supported; $1 = First Gear; $2 = Second Gear; $3 = Third Gear; $4 = Fourth Gear; $5 = Fifth Gear; $6 = Sixth Gear; $7 = Seventh Gear; $8 = Eighth Gear; $C = CVT Forward Gear; $D = Neutral Gear; $E = Reverse Gear; $F = Park Gear" trigger="true"/>
+        <Signal name="Transmission Shift Mode Status " startByte="4" startBit="2" length="3" type="ENM" rangeMin="0" rangeMax="0" units="" conversionFormula="$0 = No Override Mode; $1 = Performance Mode; $2 = Lift-Foot Cornering Mode; $3 = Automatic Grade Braking Mode" trigger="true"/>
+        <Signal name="Driver Shift Control Target Gear " startByte="2" startBit="3" length="4" type="ENM" rangeMin="0" rangeMax="0" units="" conversionFormula="$0 = Not Supported; $1 = First Gear; $2 = Second Gear; $3 = Third Gear; $4 = Fourth Gear; $5 = Fifth Gear; $6 = Sixth Gear; $7 = Seventh Gear; $8 = Eighth Gear" trigger="true"/>
+        <Signal name="Engine Recommended Upshift Indication On " startByte="2" startBit="6" length="1" type="BLN" rangeMin="0" rangeMax="0" units="" conversionFormula="$0 = False; $1 = True" trigger="true"/>
+        <Signal name="Driver Shift Control Request Denied Indication On " startByte="2" startBit="5" length="1" type="BLN" rangeMin="0" rangeMax="0" units="" conversionFormula="$0 = False; $1 = True" trigger="true"/>
+        <Signal name="Automatic Transmission Gear Shift Direction " startByte="1" startBit="5" length="2" type="ENM" rangeMin="0" rangeMax="0" units="" conversionFormula="$0 = No Shift in Progress; $1 =  Upshift in Progress; $2 =  Downshift in Progress" trigger="true"/>    </Message>
+    <Message Address="0c9">
+        <Signal name="Engine Speed " startByte="1" startBit="7" length="16" type="UNM" rangeMin="0" rangeMax="16383.8" units="rpm" conversionFormula="E = N * 0.25" trigger="true" triggerCondition=">=" triggerValue="7000" triggerMessage="Engine speed is above the threshold"/>
+        <Signal name="Engine Speed Status " startByte="0" startBit="1" length="2" type="ENM" rangeMin="0" rangeMax="16383.8" units="" conversionFormula="$0 = Normal Operation; $1 = Degraded Operation; $3 = Invalid" />
+        <Signal name="Cruise Control Active " startByte="3" startBit="6" length="1" type="BLN" rangeMin="0" rangeMax="16383.8" units="" conversionFormula="$0 = False; $1 = True" trigger="true"/>
+        <Signal name="Cruise Control Enabled " startByte="3" startBit="5" length="1" type="BLN" rangeMin="0" rangeMax="16383.8" units="" conversionFormula="$0 = False; $1 = True" trigger="true"/>
+        <Signal name="Accelerator Actual Position " startByte="4" startBit="7" length="8" type="UNM" rangeMin="0" rangeMax="100" units="" conversionFormula="E = N * 100/255" />
+        <Signal name="Engine Intake Air Boost Pressure " startByte="7" startBit="7" length="8" type="SNM" rangeMin="-128" rangeMax="127" units="kPag" conversionFormula="E = N * 1" />
+    </Message>
+    <Message Address="1c3">
+        <Signal name="Engine Torque Actual Extended Range " startByte="0" startBit="3" length="12" type="UNM" rangeMin="-848" rangeMax="1199.5" units="Nm" conversionFormula="E = (N * 0.50) - 848" />
+        <Signal name="Engine Torque Driver Requested Extended Range " startByte="2" startBit="3" length="12" type="UNM" rangeMin="-848" rangeMax="1199.5" units="Nm" conversionFormula="E = (N * 0.50) - 848" />
+        <Signal name="Engine Driver Preference Mode Switch 1 Enabled " startByte="7" startBit="7" length="1" type="BLN" rangeMin="-848" rangeMax="1199.5" units="" conversionFormula="$0 = False; $1 = True" />
+        <Signal name="Engine Driver Preference Mode Switch 1 Status " startByte="7" startBit="6" length="1" type="ENM" rangeMin="-848" rangeMax="1199.5" units="" conversionFormula="$0 = Inactive; $1 = Active" />
+        <Signal name="Fuel Filter Remaining Life " startByte="4" startBit="7" length="8" type="UNM" rangeMin="0" rangeMax="100" units="%" conversionFormula="E = N * 100/255" />
+    </Message>
+    <Message Address="4e9">    
+        <Signal name="Antilock Brake System Present " startByte="0" startBit="7" length="1" type="BLN" rangeMin="-848" rangeMax="1199.5" units="" conversionFormula="$0 = False; $1 = True" />
+        <Signal name="Traction Control System Present " startByte="0" startBit="6" length="1" type="BLN" rangeMin="-848" rangeMax="1199.5" units="" conversionFormula="$0 = False; $1 = True" />
+        <Signal name="Vehicle Stability Enhancement System Present " startByte="0" startBit="5" length="1" type="BLN" rangeMin="-848" rangeMax="1199.5" units="" conversionFormula="$0 = False; $1 = True" />
+        <Signal name="Vehicle Speed Control System Type " startByte="0" startBit="2" length="3" type="ENM" rangeMin="-848" rangeMax="1199.5" units="" conversionFormula="$0 = No Vehicle Speed Control; $1 = Conventional Cruise Control; $2 = Adaptive Cruise Control" />      
+        <Signal name="Engine Performance Identifier " startByte="5" startBit="7" length="8" type="UNM" rangeMin="0" rangeMax="510" units="kW" conversionFormula="E = N * 2" />
+    </Message>
+    <Message Address="1c7">
+        <Signal name="Torque Request Value " startByte="0" startBit="3" length="12" type="UNM" rangeMin="-848" rangeMax="1199.5" units="Nm" conversionFormula="E = (N * 0.5) - 848" />
+    </Message>
+    <Message Address="1e1">
+        <Signal name="Set Switch Active " startByte="0" startBit="4" length="1" type="BLN" rangeMin="-848" rangeMax="1199.5" units="" conversionFormula="$0 = False; $1 = True" />
+        <Signal name="Cancel Switch Active " startByte="0" startBit="7" length="1" type="BLN" rangeMin="-848" rangeMax="1199.5" units="" conversionFormula="$0 = False; $1 = True" />
+        <Signal name="On Switch Active " startByte="0" startBit="6" length="1" type="BLN" rangeMin="-848" rangeMax="1199.5" units="" conversionFormula="$0 = False; $1 = True" />
+        <Signal name="Resume Switch Active " startByte="0" startBit="5" length="1" type="BLN" rangeMin="-848" rangeMax="1199.5" units="" conversionFormula="$0 = False; $1 = True" />
+        <Signal name="Speed Increase Switch Active " startByte="0" startBit="3" length="1" type="BLN" rangeMin="-848" rangeMax="1199.5" units="" conversionFormula="$0 = False; $1 = True" />
+        <Signal name="Speed Decrease Switch Active " startByte="0" startBit="2" length="1" type="BLN" rangeMin="-848" rangeMax="1199.5" units="" conversionFormula="$0 = False; $1 = True" />
+        <Signal name="Engine Driver Preference Mode Switch 1 Alive Rolling Count " startByte="4" startBit="6" length="2" type="UNM" rangeMin="0" rangeMax="3" units="" conversionFormula="E = N * 1" />
+    </Message>
+    <Message Address="1e5">
+        <Signal name="Steering Wheel Angle " startByte="1" startBit="7" length="16" type="SNM" rangeMin="-2048" rangeMax="2047.94" units="degrees" conversionFormula="E = N * (1/16)" />
+    </Message>
+    <Message Address="120">
+        <Signal name="Odomitor " startByte="0" startBit="7" length="32" type="UNM" rangeMin="0" rangeMax="2047000" units="km" conversionFormula="E = N/64" />
+    </Message>
+    <Message Address="1e9">
+        <Signal name="Brake Pedal Driver Applied Pressure Detected " startByte="0" startBit="6" length="1" type="BLN" rangeMin="-2048" rangeMax="2047.94" units="" conversionFormula="$0 = False; $1 = True" />
+        <Signal name="Vehicle Stability Enhancement Lateral Acceleration " startByte="0" startBit="3" length="12" type="SNM" rangeMin="-32" rangeMax="31.9844" units="m/s2" conversionFormula="E = N * 1/64" />
+        <Signal name="Traction Control System Active " startByte="3" startBit="4" length="1" type="BLN" rangeMin="-32" rangeMax="31.9844" units="" conversionFormula="$0 = False; $1 = True" />
+        <Signal name="Traction Control System Enabled " startByte="3" startBit="3" length="1" type="BLN" rangeMin="-32" rangeMax="31.9844" units="" conversionFormula="$0 = False; $1 = True" />
+        <Signal name="Vehicle Stability Enhancement System Active " startByte="3" startBit="0" length="1" type="BLN" rangeMin="-32" rangeMax="31.9844" units="" conversionFormula="$0 = False; $1 = True" />
+        <Signal name="Vehicle Dynamics Yaw Rate " startByte="4" startBit="3" length="12" type="SNM" rangeMin="-128" rangeMax="127.938" units="degrees/s" conversionFormula="E = N * (1/16)" />
+        <Signal name="Vehicle Dynamics Over Under Steer " startByte="6" startBit="1" length="10" type="SNM" rangeMin="-256" rangeMax="255.5" units="" conversionFormula="E = N * 0.5" />
+    </Message>
+    <Message Address="1ed">
+        <Signal name="Instantaneous Fuel Flow Estimate " startByte="2" startBit="7" length="16" type="UNM" rangeMin="0" rangeMax="63.999" units="g/s" conversionFormula="E = N/1024" />
+        <Signal name="Advanced Fuel Flow Estimate " startByte="4" startBit="7" length="16" type="UNM" rangeMin="0" rangeMax="63.999" units="g/s" conversionFormula="E = N/1024" />
+        <Signal name="Commanded Air Fuel Ratio " startByte="6" startBit="7" length="16" type="UNM" rangeMin="0" rangeMax="31.9995" units="" conversionFormula="E = N/2048" />
+    </Message>
+    <Message Address="1ef">
+        <Signal name="Mass Air Flow " startByte="2" startBit="7" length="16" type="UNM" rangeMin="0" rangeMax="655.35" units="g/s" conversionFormula="E = N * 0.01" />
+    </Message>
+    <Message Address="1f1">
+        <Signal name="Park Brake Switch Active " startByte="4" startBit="4" length="1" type="BLN" rangeMin="0" rangeMax="655.35" units="" conversionFormula="$0 = False; $1 = True" />
+    </Message>
+    <Message Address="1eb">
+        <Signal name="Exhaust Pressure Regulator Valve Position " startByte="0" startBit="5" length="1" type="ENM" rangeMin="0" rangeMax="655.35" units="" conversionFormula="$0 = Open; $1 = Closed" />
+        <Signal name="Fuel System Estimated Pressure Delivered " startByte="0" startBit="1" length="10" type="UNM" rangeMin="0" rangeMax="1023" units="kPa" conversionFormula="E = N * 1" />
+    </Message>
+    <Message Address="2c3">
+        <Signal name="Engine Manifold Absolute Pressure " startByte="6" startBit="7" length="8" type="UNM" rangeMin="0" rangeMax="127.5" units="kPa" conversionFormula="E = N * 0.5" />
+    </Message>
+        <Message Address="BE">
+        <Signal name="Engine Manifold Absolute Pressure2 " startByte="6" startBit="7" length="8" type="UNM" rangeMin="0" rangeMax="127.5" units="kPa" conversionFormula="E = N * 0.5" />
+    </Message>
+    <Message Address="2f9">
+        <Signal name="Brake Temperature " startByte="2" startBit="7" length="8" type="UNM" rangeMin="-40" rangeMax="980" units="" conversionFormula="E = (N * 4) - 40" />
+        <Signal name="Brake Pedal Driver Applied Pressure " startByte="5" startBit="7" length="8" type="UNM" rangeMin="0" rangeMax="19125" units="kPa" conversionFormula="E = N * 75" />
+        <Signal name="Chassis Braking Load " startByte="3" startBit="7" length="8" type="UNM" rangeMin="0" rangeMax="100" units="%" conversionFormula="E = N * 100/255" />
+    </Message>
+    <Message Address="3d1">
+        <Signal name="Throttle Position " startByte="1" startBit="7" length="8" type="UNM" rangeMin="0" rangeMax="100" units="" conversionFormula="E = N * 100/255" />
+        <Signal name="Engine Boost Pressure Indication " startByte="6" startBit="7" length="8" type="UNM" rangeMin="0" rangeMax="100" units="" conversionFormula="E = N * 100/255" />
+    </Message>
+    <Message Address="3e9">
+        <Signal name="Vehicle Speed Average Driven " startByte="0" startBit="6" length="16" type="UNM" rangeMin="0" rangeMax="511.46" units="km/h" conversionFormula="E = N/64" />     
+    </Message>
+    <Message Address="3f1">
+        <Signal name="Outside Air Temperature Corrected Value " startByte="7" startBit="7" length="8" type="UNM" rangeMin="-40" rangeMax="87.5" units="" conversionFormula="E = (N * 0.5) - 40" />
+    </Message>
+    <Message Address="3f9">
+        <Signal name="Engine Cooling Fan Speed " startByte="5" startBit="7" length="8" type="UNM" rangeMin="0" rangeMax="100" units="" conversionFormula="E = N * 100/255" />
+        <Signal name="Engine Oil Remaining Life " startByte="6" startBit="7" length="8" type="UNM" rangeMin="0" rangeMax="100" units="" conversionFormula="E = N * 100/255" />
+    </Message>
+    <Message Address="4c1">
+        <Signal name="Barometric Pressure Absolute " startByte="1" startBit="7" length="8" type="UNM" rangeMin="0" rangeMax="127.5" units="kPa" conversionFormula="E = N * 0.50" />
+        <Signal name="Engine Coolant Temperature " startByte="2" startBit="7" length="8" type="UNM" rangeMin="-40" rangeMax="215" units="" conversionFormula="E = (N * 1) - 40" />
+        <Signal name="Engine Intake Air Temperature " startByte="3" startBit="7" length="8" type="UNM" rangeMin="-40" rangeMax="215" units="" conversionFormula="E = (N * 1) - 40" />
+        <Signal name="Outside Air Temperature Powertrain Estimated " startByte="4" startBit="7" length="8" type="UNM" rangeMin="-40" rangeMax="87.5" units="" conversionFormula="E = (N * 0.50) - 40" />
+    </Message>
+    <Message Address="4c9">
+        <Signal name="Transmission Oil Temperature " startByte="1" startBit="7" length="8" type="UNM" rangeMin="-40" rangeMax="215" units="" conversionFormula="E = (N * 1) - 40" />
+    </Message>
+     <Message Address="4d1">      
+        <Signal name="Engine Oil Temperature " startByte="1" startBit="7" length="8" type="UNM" rangeMin="-40" rangeMax="215" units="" conversionFormula="E = (N * 1) - 40" />
+        <Signal name="Engine Oil Pressure " startByte="2" startBit="7" length="8" type="UNM" rangeMin="0" rangeMax="1020" units="kPa" conversionFormula="E = N * 4" />
+        <Signal name="Fuel Total Capacity " startByte="3" startBit="3" length="12" type="UNM" rangeMin="0" rangeMax="511.875" units="liters" conversionFormula="E = N * 1/8" />
+        <Signal name="Fuel Level Percent " startByte="5" startBit="7" length="8" type="UNM" rangeMin="0" rangeMax="100" units="" conversionFormula="E = N * 100/255" />
+        <Signal name="Engine Speed Maximum Limit " startByte="7" startBit="7" length="8" type="UNM" rangeMin="0" rangeMax="8160" units="" conversionFormula="E = N * 32" />
+        <Signal name="Fuel Filter Change Now Indication On " startByte="6" startBit="3" length="1" type="BLN" rangeMin="0" rangeMax="655.35" units="" conversionFormula="$0 = False; $1 = True" />
+        <Signal name="Engine Diagnostic Trouble Code Present Indication On " startByte="6" startBit="2" length="1" type="BLN" rangeMin="0" rangeMax="655.35" units="" conversionFormula="$0 = False; $1 = True" />
+        <Signal name="Reduced Power Indication On " startByte="3" startBit="7" length="1" type="BLN" rangeMin="0" rangeMax="655.35" units="" conversionFormula="$0 = False; $1 = True" />
+        <Signal name="Air Conditioning Off Indication On " startByte="0" startBit="0" length="1" type="BLN" rangeMin="0" rangeMax="655.35" units="" conversionFormula="$0 = False; $1 = True" />
+        <Signal name="Engine Oil Change Indication On " startByte="0" startBit="3" length="1" type="BLN" rangeMin="0" rangeMax="655.35" units="" conversionFormula="$0 = False; $1 = True" />
+        <Signal name="Engine Oil Level Low Indication On " startByte="0" startBit="4" length="1" type="BLN" rangeMin="0" rangeMax="655.35" units="" conversionFormula="$0 = False; $1 = True" />
+        <Signal name="Engine Oil Pressure Low Indication On " startByte="0" startBit="5" length="1" type="BLN" rangeMin="0" rangeMax="655.35" units="" conversionFormula="$0 = False; $1 = True" />
+    </Message>
+</Signals>
